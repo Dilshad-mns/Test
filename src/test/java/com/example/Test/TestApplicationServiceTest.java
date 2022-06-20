@@ -10,8 +10,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.verify;
-
-import java.util.Optional;
+import static org.mockito.Mockito.when;
 
 import com.example.Test.Repository.StudentRepository;
 import com.example.Test.entity.Student;
@@ -52,4 +51,23 @@ public class TestApplicationServiceTest {
 		assertThat(savedStudent).isNotNull();
 		verify(studentRepository).save(student);
 	}
+	
+	@Test
+	public void givenStudent_deleteStudent_returnEmptyList() {
+		studentService.removeAll();
+		
+		assertThat(studentRepository.findAll()).isEmpty();
+		verify(studentRepository).deleteAll();
+	}
+	
+	@Test
+	public void givenStudent_deleteStudentById_findById_returnEmpty() {
+		studentService.removeById(1L);
+		
+		assertThat(studentRepository.findById(1L)).isEmpty();
+		verify(studentRepository).deleteById(1L);
+	}
+	
+//	@Test
+//	public 
 }
