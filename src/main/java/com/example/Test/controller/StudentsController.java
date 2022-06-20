@@ -18,7 +18,6 @@ import org.springframework.web.client.ResponseErrorHandler;
 import com.example.Test.entity.Student;
 import com.example.Test.service.StudentService;
 
-import lombok.Delegate;
 
 @RestController
 @RequestMapping(path="/student")
